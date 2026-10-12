@@ -63,7 +63,7 @@ export default function NewsPanel({
     `${item.title} ${item.summary}`.toLowerCase().includes(query.toLowerCase()),
   )
   return (
-    <section className="ud-source-section sprint-news">
+    <section className="ud-source-section workspace-news">
       <h2>Collect news</h2>
       <p className="ud-source-note">
         Import a public article or collect RSS/Atom stories. Choose a story to turn it into a
@@ -71,7 +71,7 @@ export default function NewsPanel({
       </p>
       <label>
         Article URL
-        <div className="sprint-inline-actions">
+        <div className="workspace-inline-actions">
           <input
             aria-label="Article URL"
             type="url"
@@ -130,12 +130,12 @@ export default function NewsPanel({
         <>
           <input
             aria-label="Search collected news"
-            className="sprint-news-search"
+            className="workspace-news-search"
             placeholder="Filter collected stories…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <div className="sprint-news-list">
+          <div className="workspace-news-list">
             {items.map((item) => (
               <article key={item.id}>
                 <div>

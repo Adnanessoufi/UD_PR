@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import type { ProcessingState } from './ProcessingStatus'
 import PlatformMockup from './PlatformMockup'
 import PublishPanel from './PublishPanel'
 import SourcesModal from './SourcesModal'
@@ -17,7 +16,7 @@ import StudioMediaTray from './StudioMediaTray'
 import { uploadDocument } from '../services/upload'
 import type { AssetPack } from '../types/assets'
 import type { CombinedResult, MasterContent } from '../types/content'
-import type { PackageProgress, StageState } from '../types/generation'
+import type { PackageProgress, StageState, ProcessingState } from '../types/generation'
 import { orderedMediaAssets, type MediaAsset } from '../types/media'
 import {
   platformAvailability,
@@ -476,7 +475,7 @@ export default function StudioWorkspace(props: Props) {
       </nav>
       <main className="ud-main">
         {props.workspaceError && (
-          <p role="alert" className="ud-error sprint-workspace-error">
+          <p role="alert" className="ud-error workspace-workspace-error">
             {props.workspaceError}
           </p>
         )}
@@ -672,7 +671,7 @@ export default function StudioWorkspace(props: Props) {
               />
             )}
             {!mediaReady && (
-              <div className="sprint-media-progress">
+              <div className="workspace-media-progress">
                 <p className="ud-source-note">
                   Text is ready to review while media is prepared. Approval opens when the selected
                   media is ready.

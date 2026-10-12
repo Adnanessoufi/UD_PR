@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { MediaAsset } from '../types/media'
 import type { PlatformName, PlatformPost } from '../types/platform'
 import type { VideoStatus } from '../types/video'
-import { VideoPlayer } from './VideoPanel'
+import { VideoPlayer } from './VideoPlayer'
 
 type IconName = 'globe' | 'like' | 'heart' | 'comment' | 'repost' | 'share' | 'send' | 'save'
 

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import type { ProcessingState } from './components/ProcessingStatus'
 import StudioWorkspace from './components/StudioWorkspace'
 import { reopenCampaign, saveBrief, saveWorkspace } from './services/campaigns'
 import { defaultBrief, type CampaignBrief } from './types/campaign'
@@ -28,7 +27,7 @@ import {
 } from './services/video'
 import type { CombinedResult, MasterContent } from './types/content'
 import type { AssetPack } from './types/assets'
-import { packageState, type PackageProgress } from './types/generation'
+import { packageState, type PackageProgress, type ProcessingState } from './types/generation'
 import type { MediaAsset } from './types/media'
 import {
   platformAvailability,

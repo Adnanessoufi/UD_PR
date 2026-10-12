@@ -63,6 +63,4 @@ npm run format:check
 
 Install `backend/requirements-dev.txt` for Python formatting, then run `ruff format backend/app backend/tests scripts` from the project root. Frontend code uses two-space indentation, single quotes and no semicolons.
 
-New tools can use the existing task runner, campaign inputs and UI slots. See [extending the app](docs/EXTENDING_THE_APP.md).
-
-Local credentials, uploaded documents, generated media and rehearsal backups are excluded from Git.
+Local credentials, uploaded documents and generated media are excluded from Git.

@@ -1,4 +1,4 @@
-"""Schema discovery and durable task execution for Sprint extensions."""
+"""Task schemas and background job endpoints."""
 
 from uuid import UUID
 from fastapi import APIRouter, HTTPException

@@ -1,5 +1,7 @@
 import type { ContentType } from './platform'
 
+export type ProcessingState = 'processing' | 'ready' | 'failed'
+
 export type StageState = 'pending' | 'ready' | 'failed'
 export type PackageProgress = {
   source: StageState

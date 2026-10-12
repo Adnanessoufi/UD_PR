@@ -6,7 +6,7 @@ import './styles.css'
 import './university-site.css'
 import './studio-workspace.css'
 import './ud-studio.css'
-import './sprint-workspace.css'
+import './workspace-tools.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

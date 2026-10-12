@@ -29,3 +29,10 @@ backend/storage/*
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local preparation scripts
+/backend/app/scripts/preprocess_demo_files.py
+/backend/app/scripts/recover_demo_files.py
+/backend/app/scripts/rehearse.py
+/backend/scaffold/
+/scripts/backup-demo.py

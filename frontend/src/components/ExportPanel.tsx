@@ -21,7 +21,7 @@ export default function ExportPanel({
     }
   }
   return (
-    <section className="sprint-export">
+    <section className="workspace-export">
       <div>
         <h2>Take the campaign with you</h2>
         <p>
@@ -29,7 +29,7 @@ export default function ExportPanel({
           publishing.
         </p>
       </div>
-      <div className="sprint-inline-actions">
+      <div className="workspace-inline-actions">
         <button type="button" className="ud-secondary-button" onClick={() => void copy()}>
           Copy platform text
         </button>

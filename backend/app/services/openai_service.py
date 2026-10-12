@@ -78,7 +78,7 @@ async def _openai_structured_response(
 async def structured_response(
     prompt: str, source: str, schema: type[T], *, checker: bool = False
 ) -> T:
-    """Stable public facade shared by all current and future tasks."""
+    """Shared entry point for structured model responses."""
     from app.services.model_gateway import generate
 
     return await generate(prompt, source, schema, checker=checker)

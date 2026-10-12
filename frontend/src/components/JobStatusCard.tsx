@@ -11,7 +11,7 @@ export default function JobStatusCard({ job, error, pending = false, onCancel, o
   const active = job && ['queued', 'running'].includes(job.state)
   const retryable = job && ['failed', 'interrupted', 'cancelled'].includes(job.state)
   return (
-    <section aria-label="Task progress" className="sprint-media-progress">
+    <section aria-label="Task progress" className="workspace-media-progress">
       <strong>{job?.label || 'Preparing task'}</strong>
       {job && (
         <>
@@ -29,7 +29,7 @@ export default function JobStatusCard({ job, error, pending = false, onCancel, o
           {error || job?.error}
         </p>
       )}
-      <div className="sprint-inline-actions">
+      <div className="workspace-inline-actions">
         {active && onCancel && (
           <button
             type="button"

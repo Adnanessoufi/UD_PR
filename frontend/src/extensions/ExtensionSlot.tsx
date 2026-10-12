@@ -10,7 +10,7 @@ class ExtensionBoundary extends Component<{ children: ReactNode }, { failed: boo
   render() {
     if (this.state.failed)
       return (
-        <section className="sprint-media-progress" role="alert">
+        <section className="workspace-media-progress" role="alert">
           <p>This tool could not load.</p>
           <button
             type="button"

@@ -92,7 +92,7 @@ function Panel({{ context }}: {{ context: ExtensionContext }}) {{
   const [instruction, setInstruction] = useState('')
   const task = useJob<Result>(context.runId, {json.dumps(task_id)})
   const busy = task.pending || task.job?.state === 'queued' || task.job?.state === 'running'
-  return <section className="sprint-media-progress"><h2>{{label}}</h2>
+  return <section className="workspace-media-progress"><h2>{{label}}</h2>
     <form onSubmit={{event => {{ event.preventDefault(); void task.start({{ instruction, language: context.language }}).catch(() => undefined) }}}}>
       <label>Instruction<textarea rows={{3}} maxLength={{1000}} value={{instruction}} disabled={{busy}} onChange={{event => setInstruction(event.target.value)}} /></label>
       <button type="submit" className="ud-secondary-button" disabled={{busy || instruction.trim().length < 3}}>Run</button>

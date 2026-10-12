@@ -34,7 +34,7 @@ export default function CampaignBriefPanel({
       <p className="ud-source-note">
         Set the audience and style once. Each channel adapts the same source facts.
       </p>
-      <fieldset disabled={disabled || busy} className="sprint-brief-grid">
+      <fieldset disabled={disabled || busy} className="workspace-brief-grid">
         <label>
           Audience
           <select
@@ -73,7 +73,7 @@ export default function CampaignBriefPanel({
             <option value="detailed">Detailed</option>
           </select>
         </label>
-        <label className="sprint-wide">
+        <label className="workspace-wide">
           Communication focus
           <input
             maxLength={300}
@@ -82,7 +82,7 @@ export default function CampaignBriefPanel({
             placeholder="What should this campaign help people understand?"
           />
         </label>
-        <label className="sprint-wide">
+        <label className="workspace-wide">
           Call to action
           <input
             maxLength={200}
@@ -97,7 +97,7 @@ export default function CampaignBriefPanel({
           {error}
         </p>
       )}
-      <div className="sprint-inline-actions">
+      <div className="workspace-inline-actions">
         <button
           type="button"
           className="ud-secondary-button"

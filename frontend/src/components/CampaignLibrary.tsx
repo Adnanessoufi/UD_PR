@@ -82,7 +82,7 @@ export default function CampaignLibrary({
   }
   return (
     <div
-      className="sprint-modal"
+      className="workspace-modal"
       role="presentation"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose()
@@ -92,7 +92,7 @@ export default function CampaignLibrary({
         role="dialog"
         aria-modal="true"
         aria-labelledby="campaign-library-title"
-        className="sprint-library"
+        className="workspace-library"
       >
         <header>
           <div>
@@ -104,7 +104,7 @@ export default function CampaignLibrary({
             Close
           </button>
         </header>
-        <div className="sprint-library-filters">
+        <div className="workspace-library-filters">
           <input
             aria-label="Search campaigns"
             placeholder="Search by title or source…"
@@ -127,12 +127,12 @@ export default function CampaignLibrary({
         )}
         {busy && <p role="status">Loading campaigns…</p>}
         {!busy && !items.length && <p>No campaigns found. Collect a source to start one.</p>}
-        <div className="sprint-campaign-list">
+        <div className="workspace-campaign-list">
           {items.map((item) => (
             <article key={item.run_id}>
-              <div className="sprint-campaign-top">
+              <div className="workspace-campaign-top">
                 <button
-                  className="sprint-star"
+                  className="workspace-star"
                   type="button"
                   aria-label={`${item.starred ? 'Unstar' : 'Star'} ${item.title}`}
                   disabled={busy}
@@ -147,10 +147,10 @@ export default function CampaignLibrary({
                     {new Date(item.updated_at).toLocaleDateString()}
                   </p>
                 </div>
-                <span className="sprint-status">{states[item.status] || 'Draft'}</span>
+                <span className="workspace-status">{states[item.status] || 'Draft'}</span>
               </div>
               {rename === item.run_id && (
-                <div className="sprint-inline-actions">
+                <div className="workspace-inline-actions">
                   <input
                     aria-label="Campaign name"
                     maxLength={140}
@@ -170,7 +170,7 @@ export default function CampaignLibrary({
                   </button>
                 </div>
               )}
-              <div className="sprint-inline-actions">
+              <div className="workspace-inline-actions">
                 <button
                   type="button"
                   className="ud-secondary-button"
