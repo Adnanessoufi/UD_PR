@@ -1,0 +1,32 @@
+[
+  {
+    "id": "supported-en",
+    "source": "In a computer simulation of 339 samples, the system achieved 88.8% accuracy. The system has not been validated in field deployments.",
+    "claim": "In simulation, the system achieved 88.8% accuracy on 339 samples.",
+    "should_flag": false
+  },
+  {
+    "id": "supported-hu",
+    "source": "In a computer simulation of 339 samples, the system achieved 88.8% accuracy.",
+    "claim": "Szimulációban, 339 mintán a rendszer 88,8%-os pontosságot ért el.",
+    "should_flag": false
+  },
+  {
+    "id": "lost-qualifier",
+    "source": "The system achieved 88.8% accuracy in a simulation. It has not been deployed in the field.",
+    "claim": "The system achieved 88.8% accuracy in field deployment.",
+    "should_flag": true
+  },
+  {
+    "id": "wrong-number",
+    "source": "In simulation, the system achieved 88.8% accuracy.",
+    "claim": "In simulation, the system achieved 99.9% accuracy.",
+    "should_flag": true
+  },
+  {
+    "id": "invented-quote",
+    "source": "The authors reported simulation results and called for further validation.",
+    "claim": "The lead researcher said, \"Our system is guaranteed to work perfectly in hospitals.\"",
+    "should_flag": true
+  }
+]

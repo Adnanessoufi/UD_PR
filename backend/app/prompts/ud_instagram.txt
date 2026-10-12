@@ -1,0 +1,1 @@
+INSTAGRAM: Write a concise, visual-friendly caption in the requested output language to accompany the selected image or video. Approximately 60–120 words. Do not claim a particular visual exists or describe invented imagery. Keep factual qualifications intact.

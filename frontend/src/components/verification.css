@@ -1,0 +1,226 @@
+.ud-verification {
+  margin-top: 32px;
+  padding: 26px;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+  background: #fff;
+}
+.ud-verification-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.ud-verification h2 {
+  font-size: 23px;
+  margin: 8px 0;
+}
+.ud-verification p {
+  line-height: 1.6;
+}
+.ud-verification-heading p,
+.ud-validation-models,
+.ud-human-approval > p {
+  color: #536358;
+  font-size: 13px;
+}
+.ud-validation-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0 12px;
+}
+.ud-validation-stats span {
+  background: #f1f6f2;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+}
+.ud-validation-stats strong {
+  display: block;
+  font-size: 25px;
+}
+.ud-verification-warning {
+  border: 1px solid #e2c98e;
+  padding: 14px;
+  background: #fff9eb;
+  border-radius: 8px;
+}
+.ud-review-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 14px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.ud-review-checkbox input {
+  margin-top: 4px;
+  accent-color: #275c41;
+}
+.ud-evidence-workspace {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(0, 1.5fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+.ud-claim-list {
+  max-height: 520px;
+  overflow-y: auto;
+}
+.ud-claim-list button {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  text-align: left;
+  border: 1px solid #dce5df;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+.ud-claim-list button.selected {
+  background: #f0f6f1;
+  border-color: #275c41;
+}
+.ud-claim-list small {
+  color: #647168;
+}
+.ud-verdict {
+  display: inline-block;
+  width: fit-content;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #edf1ef;
+  color: #4a5850;
+}
+.ud-verdict.supported {
+  background: #e5f4e9;
+  color: #1e6235;
+}
+.ud-verdict.unsupported {
+  background: #ffe9e8;
+  color: #922c26;
+}
+.ud-verdict.exaggerated,
+.ud-verdict.needs_review {
+  background: #fff2d6;
+  color: #795817;
+}
+.ud-claim-proof {
+  border: 1px solid #dce5df;
+  border-radius: 8px;
+  padding: 18px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.ud-claim-proof h3 {
+  font-size: 16px;
+  margin: 12px 0;
+}
+.ud-suggested-revision {
+  background: #f5f7f5;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 14px 0;
+}
+.ud-evidence-excerpt {
+  margin: 18px 0;
+}
+.ud-evidence-excerpt blockquote {
+  border-left: 3px solid #accab4;
+  margin: 10px 0;
+  padding-left: 12px;
+  color: #485c4e;
+  white-space: pre-wrap;
+}
+.ud-evidence-excerpt a {
+  text-decoration: underline;
+}
+.ud-evidence-page {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  border: 1px solid #dce5df;
+}
+.ud-human-approval {
+  border-top: 1px solid #dce5df;
+  margin-top: 24px;
+  padding-top: 20px;
+}
+.ud-reviewer-name {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 360px;
+  font-size: 14px;
+}
+.ud-reviewer-name input {
+  border: 1px solid #c8d4cb;
+  border-radius: 6px;
+  padding: 10px;
+}
+.ud-approved {
+  background: #e5f4e9;
+  color: #1e6235;
+  border-radius: 8px;
+  padding: 14px;
+}
+@media (max-width: 760px) {
+  .ud-evidence-workspace {
+    grid-template-columns: 1fr;
+  }
+  .ud-verification-heading {
+    flex-direction: column;
+  }
+  .ud-verification {
+    padding: 16px;
+  }
+  .ud-claim-list {
+    max-height: 280px;
+  }
+}
+
+.ud-master-review {
+  margin-top: 24px;
+}
+.ud-master-content {
+  margin-top: 16px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #dce5df;
+  border-radius: 10px;
+}
+.ud-master-content h2 {
+  font-size: 22px;
+}
+.ud-master-content p {
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+.ud-master-field {
+  margin-top: 18px;
+}
+.ud-master-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.ud-master-field textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #c8d4cb;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.ud-master-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}

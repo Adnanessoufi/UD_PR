@@ -1,0 +1,31 @@
+# Dependencies and builds
+node_modules/
+dist/
+.venv/
+.npm-cache/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.ruff_cache/
+
+# Local configuration and generated files
+.env
+.env.*
+!.env.example
+*.log
+backend/storage/*
+!backend/storage/.gitkeep
+
+# Local demo material
+/sample_files_for_PR (1)/
+/PROJECT_IMPROVEMENT_REVIEW.md
+/docs/*
+!/docs/EXTENDING_THE_APP.md
+!/docs/VALIDATION_WORKFLOW.md
+!/docs/LIVING_STORIES.md
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
