@@ -32,7 +32,8 @@ export default function CampaignBriefPanel({
     <section className="ud-source-section ud-brief">
       <h2>Campaign brief</h2>
       <p className="ud-source-note">
-        Set the audience and style once. Each channel adapts the same source facts.
+        Choose who you're writing for and how you want it to sound. The facts stay the same across
+        channels.
       </p>
       <fieldset disabled={disabled || busy} className="workspace-brief-grid">
         <label>
@@ -74,16 +75,16 @@ export default function CampaignBriefPanel({
           </select>
         </label>
         <label className="workspace-wide">
-          Communication focus
+          What should people take away?
           <input
             maxLength={300}
             value={draft.focus}
             onChange={(e) => setDraft({ ...draft, focus: e.target.value })}
-            placeholder="What should this campaign help people understand?"
+            placeholder="What do you want people to understand?"
           />
         </label>
         <label className="workspace-wide">
-          Call to action
+          What should people do next?
           <input
             maxLength={200}
             value={draft.call_to_action}
@@ -108,7 +109,8 @@ export default function CampaignBriefPanel({
         </button>
         {changed && (
           <span className="ud-source-note">
-            Save before generating. Updated preferences require new content and review.
+            Save your changes before generating. If you change the brief, you'll need new drafts and
+            another review.
           </span>
         )}
       </div>

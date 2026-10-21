@@ -90,16 +90,16 @@ const destinationOrder: PlatformName[] = [
   'youtube',
 ]
 const outputOptions: { id: ContentType; label: string; description: string }[] = [
-  { id: 'text', label: 'Text', description: 'Article and platform copy' },
-  { id: 'image', label: 'Image', description: 'Editorial and source visuals' },
-  { id: 'video', label: 'Video', description: 'Narrated research video' },
+  { id: 'text', label: 'Text', description: 'An article and posts for your channels' },
+  { id: 'image', label: 'Image', description: 'Images to go with your story' },
+  { id: 'video', label: 'Video', description: 'A video with narration and captions' },
 ]
 const quickStageLabels: Record<string, string> = {
   starting: 'Starting research...',
   researching_announcement: 'Researching announcement...',
   finding_official_sources: 'Finding official sources...',
   finding_relevant_visuals: 'Finding relevant visuals...',
-  preparing_communication_package: 'Preparing communication package...',
+  preparing_communication_package: 'Preparing your drafts...',
 }
 
 function ConnectionMark({ name }: { name: PlatformName }) {
@@ -332,7 +332,7 @@ export default function StudioWorkspace(props: Props) {
     if (!file) return
     setUploadError('')
     if (!/\.(pdf|docx)$/i.test(file.name) || file.size === 0) {
-      setUploadError('Choose a non-empty PDF or DOCX document.')
+      setUploadError('Choose a PDF or DOCX with some content in it.')
       return
     }
     setUploading(true)
@@ -487,10 +487,8 @@ export default function StudioWorkspace(props: Props) {
         {generating ? (
           <section className="ud-progress-screen" role="status">
             <p className="ud-eyebrow">02 / Create</p>
-            <h1>
-              {previewState === 'error' ? 'Generation paused' : 'Preparing communication package'}
-            </h1>
-            <p>Your selected outputs will appear together when they are ready.</p>
+            <h1>{previewState === 'error' ? 'Generation paused' : 'Preparing your campaign'}</h1>
+            <p>Your drafts will appear here when they're ready.</p>
             <div className="ud-progress-list">
               <ProgressRow
                 label={props.sourceMode === 'quick' ? 'Web research' : 'Source understood'}
@@ -541,8 +539,8 @@ export default function StudioWorkspace(props: Props) {
           <div className="ud-review-screen">
             <div className="ud-section-heading">
               <p className="ud-eyebrow">03 / Review</p>
-              <h1>Review your communication package</h1>
-              <p>Check the platform copy and media before publishing.</p>
+              <h1>Have a look at your campaign</h1>
+              <p>Read the drafts and check the media before you publish.</p>
             </div>
             {combined?.analysis.warning && (
               <p className="ud-research-warning" role="status">
@@ -673,8 +671,8 @@ export default function StudioWorkspace(props: Props) {
             {!mediaReady && (
               <div className="workspace-media-progress">
                 <p className="ud-source-note">
-                  Text is ready to review while media is prepared. Approval opens when the selected
-                  media is ready.
+                  You can read the drafts while the media is being prepared. You can approve the
+                  campaign once the media is ready too.
                 </p>
                 {imageSelected && <ProgressRow label="Images" state={progress.image} />}
                 {videoSelected && (
@@ -730,13 +728,13 @@ export default function StudioWorkspace(props: Props) {
           <section className="ud-source-screen">
             <div className="ud-section-heading">
               <p className="ud-eyebrow">01 / Source</p>
-              <h1>Create communication package</h1>
+              <h1>What would you like to share?</h1>
               <p>
                 {props.sourceMode === 'quick'
-                  ? 'Turn a short announcement into a communication campaign.'
+                  ? 'Start with a short announcement. Choose the channels you want drafts for below.'
                   : props.sourceMode === 'news'
-                    ? 'Collect a story and adapt it for your audience and channels.'
-                    : 'Turn a source document into a communication campaign.'}
+                    ? 'Pick a news story, then choose who you want to share it with.'
+                    : 'Upload a document, then choose what you want to make from it.'}
               </p>
             </div>
             <div className="ud-source-modes" role="tablist" aria-label="Source mode">
@@ -774,7 +772,7 @@ export default function StudioWorkspace(props: Props) {
                 {document && <p className="ud-source-note">Selected story: {document.filename}</p>}
                 {document && processing === 'processing' && (
                   <p role="status" className="ud-source-note">
-                    Understanding collected article…
+                    Reading the article…
                   </p>
                 )}
                 {document && processing === 'failed' && (
@@ -795,7 +793,7 @@ export default function StudioWorkspace(props: Props) {
                   </div>
                   <div>
                     <strong>
-                      {document?.filename || 'Choose a research paper or curriculum document'}
+                      {document?.filename || 'Choose a paper or another university document'}
                     </strong>
                     <small>
                       {uploading
@@ -831,7 +829,7 @@ export default function StudioWorkspace(props: Props) {
                   </p>
                 )}
                 {document && processing === 'processing' && (
-                  <p className="ud-source-note">Understanding source document...</p>
+                  <p className="ud-source-note">Reading your document...</p>
                 )}
                 {document && processing === 'failed' && (
                   <p className="ud-error" role="alert">
@@ -857,8 +855,8 @@ export default function StudioWorkspace(props: Props) {
                   onChange={(event) => setQuickText(event.target.value)}
                 />
                 <p className="ud-source-note">
-                  We will look for public sources and images. You can review any research warning
-                  before publishing.
+                  We'll look for public sources and images to go with it. Check any research
+                  warnings before you publish.
                 </p>
               </div>
             )}
@@ -897,7 +895,8 @@ export default function StudioWorkspace(props: Props) {
               </div>
               {props.sourceMode === 'quick' && (
                 <p className="ud-source-note">
-                  Text is included. Select Image to add researched visuals. Video is unavailable.
+                  Text is already included. Choose Image if you want visuals too. Video isn't
+                  available for quick announcements.
                 </p>
               )}
             </div>

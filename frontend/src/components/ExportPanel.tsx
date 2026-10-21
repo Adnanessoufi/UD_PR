@@ -25,8 +25,8 @@ export default function ExportPanel({
       <div>
         <h2>Take the campaign with you</h2>
         <p>
-          Export drafts for a teammate, an editor or your demo. Approval is still required before
-          publishing.
+          Download your drafts to share or work on later. You'll still need approval before
+          publishing through the app.
         </p>
       </div>
       <div className="workspace-inline-actions">

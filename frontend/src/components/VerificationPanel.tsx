@@ -131,10 +131,10 @@ export default function VerificationPanel({
       <div className="ud-verification-heading">
         <div>
           <p className="ud-eyebrow">Validation</p>
-          <h2>Check the claims. Review the evidence.</h2>
+          <h2>Does the source back this up?</h2>
           <p>
-            A separate model checks the meaning; code confirms quotes and numbers. A person approves
-            the final package.
+            A different model checks the claims against the source, and code checks the quotes and
+            numbers. You still need to review the campaign before approving it.
           </p>
         </div>
         <button
@@ -149,13 +149,13 @@ export default function VerificationPanel({
       {busy === 'loading' && <p role="status">Loading review status…</p>}
       {busy === 'checking' && (
         <p role="status">
-          Checking every text unit against source passages. This may take a few minutes.
+          Checking the text against the original source. This may take a few minutes.
         </p>
       )}
       {status?.configuration_message && (
         <p className="ud-verification-warning" role="status">
-          {status.configuration_message} Drafts remain available; verification and publishing stay
-          locked.
+          {status.configuration_message} You can still work on drafts. Checking and publishing will
+          be available once this is set up.
         </p>
       )}
       {error && (
@@ -188,7 +188,7 @@ export default function VerificationPanel({
           </div>
           <p className="ud-validation-models">
             Writer: {status.report.writer_model} · Checker: {status.report.checker_model}. These are
-            checker verdicts, not a measured accuracy score.
+            the checker's verdicts. They don't tell you how accurate the checker is.
           </p>
           <label className="ud-review-checkbox">
             <input
@@ -203,7 +203,7 @@ export default function VerificationPanel({
           </label>
           {filtered.length === 0 ? (
             <p role="status">
-              No flagged units. Show all units to inspect their evidence before approving.
+              Nothing was flagged. Show all units to check the evidence before you approve.
             </p>
           ) : (
             <div className="ud-evidence-workspace">
@@ -272,7 +272,7 @@ export default function VerificationPanel({
                     </div>
                   ))}
                   {!current.evidence.length && (
-                    <p>No confirmed source passage was linked to this unit.</p>
+                    <p>There's no confirmed source excerpt linked to this part of the text.</p>
                   )}
                   {firstPdf >= 0 && (
                     <>
@@ -299,15 +299,15 @@ export default function VerificationPanel({
           <div className="ud-human-approval">
             <h3>Human approval</h3>
             <p>
-              Correct every flagged unit and recheck. Review images, footage, narration and
-              researcher quotes yourself; the text checker does not verify image pixels or uploaded
-              footage.
+              Fix anything that was flagged, then run the check again. Review the images and
+              uploaded footage yourself, along with any narration or researcher quotes. The text
+              checker can't verify what's in an image or uploaded footage.
             </p>
             {status.state === 'approved' && status.approval ? (
               <p className="ud-approved" role="status">
                 Approved by {status.approval.reviewer} ·{' '}
-                {new Date(status.approval.approved_at).toLocaleString()}. Changes require a new
-                check and approval.
+                {new Date(status.approval.approved_at).toLocaleString()}. If you make changes, check
+                and approve the new version.
               </p>
             ) : (
               <>

@@ -66,8 +66,8 @@ export default function NewsPanel({
     <section className="ud-source-section workspace-news">
       <h2>Collect news</h2>
       <p className="ud-source-note">
-        Import a public article or collect RSS/Atom stories. Choose a story to turn it into a
-        campaign.
+        Paste a public article link or add an RSS/Atom feed. Then pick the story you want to work
+        on.
       </p>
       <label>
         Article URL
@@ -118,7 +118,7 @@ export default function NewsPanel({
       )}
       {inbox?.added !== undefined && (
         <p className="ud-source-note">
-          {inbox.added} new stories collected. Duplicate URLs are kept once.
+          {inbox.added} new stories added. Repeated links are only saved once.
         </p>
       )}
       {inbox?.errors?.map((item) => (

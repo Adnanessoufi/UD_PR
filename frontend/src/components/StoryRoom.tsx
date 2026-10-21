@@ -19,19 +19,19 @@ type Answer = {
 }
 const copy = {
   en: {
-    eyebrow: 'A story you can talk to',
+    eyebrow: 'Questions about the story',
     title: 'Ask this story',
-    intro: 'Go beyond the headline. Ask a question and explore the original evidence.',
+    intro: 'Ask a question about the story. You can check the source excerpts behind the answer.',
     story: 'The story',
-    sourceEmpty: 'Ask a question to reveal the passages behind the answer.',
+    sourceEmpty: 'Ask a question to see the source excerpts used in the answer.',
     pipeline: 'Original source → AI answer → independent check → exact excerpts',
     language: 'Answer in',
-    placeholder: 'Ask what the story really means…',
+    placeholder: 'What would you like to know about this story?',
     ask: 'Ask the source',
     source: 'Inside the source',
-    empty: 'Your question. The original evidence.',
+    empty: 'Start with a question',
     emptyBody:
-      'Choose a question below, or ask your own. Answers keep the study’s limitations in view.',
+      'Try one of the questions below, or write your own. Check what the source can actually support.',
     chips: [
       'What is the main finding in plain language?',
       'What does the biggest improvement actually measure?',
@@ -41,13 +41,13 @@ const copy = {
     reply: 'Reply to your audience',
     copy: 'Copy reply draft',
     copied: 'Copied',
-    recent: 'Explore previous questions',
+    recent: 'Previous questions',
     confirmed: 'Exact source excerpts confirmed',
-    missing: 'The source does not establish this',
+    missing: "The source doesn't back this up",
     page: 'Page',
     open: 'Open original page',
     closePage: 'Close page',
-    busy: 'Reading, answering and checking the source…',
+    busy: 'Preparing an answer and checking it against the source…',
     close: 'Close audience preview',
     draft: 'Audience preview · AI answer · Review replies before posting',
     noEvidence: 'No relevant evidence found in this source.',
@@ -189,9 +189,9 @@ export default function StoryRoom({
           ✦
         </span>
         <div>
-          <span className="story-room-kicker">NEW · AUDIENCE EXPERIENCE</span>
-          <h3>Give your story a voice.</h3>
-          <p>Let readers ask questions. Let the source answer.</p>
+          <span className="story-room-kicker">Questions from readers</span>
+          <h3>What might people ask about this?</h3>
+          <p>Try a question and see an answer with excerpts from the source.</p>
         </div>
         <button type="button" onClick={() => setOpen(true)}>
           Open audience preview <span aria-hidden="true">↗</span>

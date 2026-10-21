@@ -1,12 +1,12 @@
 # Living Stories
 
-Readers can ask about a generated story in English or Hungarian and inspect the source behind the answer.
+Living Stories lets you ask questions about a generated story in English or Hungarian. You get an answer with excerpts from the source, so you can see what it's based on.
 
-Open **Audience preview** from the campaign review screen. Choose a suggested question or enter your own. The answer includes source excerpts, an original-page viewer for PDFs and a reply draft you can copy.
+Open **Audience preview** from the campaign review screen. Try one of the suggested questions or write your own. If the source is a PDF, you can open the original page too. There's also a short reply draft you can copy.
 
-The writer prepares an answer, a separate checker reviews it, and code confirms its quoted excerpts and numeric tokens. Saved answers are linked to the source version, question and language so the same question can reopen without another model call.
+One model writes the answer and a different model checks it. Code checks the quoted excerpts and numbers too. Saved answers are linked to the source version, question and language. Asking the same question again can reuse the saved answer instead of making another model call.
 
-## Code
+## Where it lives in the code
 
 - Task: `story.answer`
 - History: `GET /api/story-room/{run_id}/answers`
@@ -14,4 +14,4 @@ The writer prepares an answer, a separate checker reviews it, and code confirms 
 - Backend module: `app/extensions/living_stories.py`
 - UI module: `src/extensions/living-stories.tsx`
 
-This is a local audience preview. It does not connect to a public social inbox or publish replies automatically. Review a reply before posting it.
+This is a local preview. It doesn't connect to a public social inbox or post replies for you. Read the reply and check the evidence before you use it.

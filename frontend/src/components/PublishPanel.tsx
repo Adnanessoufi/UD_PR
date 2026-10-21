@@ -255,16 +255,16 @@ export default function PublishPanel({
       <div className="ud-section-heading">
         <p className="ud-eyebrow">04 / Publish</p>
         <h1>{heading}</h1>
-        <p>Each destination publishes independently. Review the result for every channel.</p>
+        <p>Each channel publishes separately. Check the result for each one here.</p>
       </div>
       {!approved && (
         <p role="status" className="ud-error">
-          Return to review, check the current package and save human approval before publishing.
+          Go back to review and approve the current version before you publish.
         </p>
       )}
       {captionOnlyTikTok && (
         <p className="ud-source-note">
-          TikTok caption preview only. A video is required to publish there.
+          You can preview the TikTok caption here. You'll need a video to publish it.
         </p>
       )}
       <div className="ud-publish-list">

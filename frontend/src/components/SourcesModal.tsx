@@ -26,13 +26,13 @@ export default function SourcesModal({
         <div className="flex items-start justify-between gap-4 border-b border-[#e8edf4] p-6">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.17em] text-blue">
-              Source grounding
+              Original sources
             </p>
             <h2 id="sources-heading" className="mt-2 text-xl font-semibold">
               Key facts & sources
             </h2>
             <p className="mt-1 text-sm text-slate-500">
-              Evidence used to develop this communication.
+              Here's where the facts in your draft came from.
             </p>
           </div>
           <button

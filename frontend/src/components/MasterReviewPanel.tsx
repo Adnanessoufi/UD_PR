@@ -58,8 +58,8 @@ export default function MasterReviewPanel({ content, onSave, onEditingChange }: 
         <div className="ud-master-content">
           <h2>Master story & press release</h2>
           <p>
-            These outputs are checked alongside the platform posts. Changes require a new
-            verification and approval.
+            These drafts are checked along with your channel posts. If you edit them, run the check
+            again and approve the new version.
           </p>
           {error && (
             <p className="ud-error" role="alert">

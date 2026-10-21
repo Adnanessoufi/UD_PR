@@ -98,7 +98,7 @@ export default function CampaignLibrary({
           <div>
             <p className="ud-eyebrow">Workspace</p>
             <h2 id="campaign-library-title">Your campaigns</h2>
-            <p>Reopen saved work, keep useful drafts and prepare the next campaign.</p>
+            <p>Pick up where you left off, or keep a useful draft for later.</p>
           </div>
           <button type="button" className="ud-secondary-button" onClick={onClose}>
             Close
@@ -126,7 +126,7 @@ export default function CampaignLibrary({
           </p>
         )}
         {busy && <p role="status">Loading campaigns…</p>}
-        {!busy && !items.length && <p>No campaigns found. Collect a source to start one.</p>}
+        {!busy && !items.length && <p>No campaigns found. Add a source to start one.</p>}
         <div className="workspace-campaign-list">
           {items.map((item) => (
             <article key={item.run_id}>

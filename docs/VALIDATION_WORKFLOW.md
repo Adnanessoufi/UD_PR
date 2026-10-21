@@ -1,30 +1,30 @@
 # Content validation
 
-A campaign goes through writing, checking and human review before publishing.
+The app writes a draft, checks it against the source and asks a person to review it before publishing. Here's what happens at each step.
 
 ## Checks
 
 1. The writer creates the master story and channel drafts.
-2. A different checker model compares text units with original source passages, including selected video narration and overlays.
-3. Code confirms each quoted excerpt and checks numeric tokens against the linked evidence.
-4. The review panel shows verdicts, suggested corrections and source excerpts. PDF citations can open a highlighted page; DOCX and web sources show excerpts.
+2. A different model compares each part of the text with the original source. This includes the selected video's narration and overlays.
+3. Code checks whether the quoted excerpts are actually in the source and whether the numbers appear in the linked evidence.
+4. You can see the verdicts and source excerpts in the review panel, along with suggested corrections. For PDFs, you can open a highlighted page. DOCX and web sources show excerpts.
 
-A number appearing somewhere in a paper is not enough. It must also occur in the cited evidence. Units, causality and missing qualifiers require the model's semantic check and the reviewer's judgment.
+A number being somewhere in the paper isn't enough. It has to appear in the evidence linked to that claim. Even then, the same number can mean different things. The model and reviewer still need to check the units, what caused what and any limits the draft left out.
 
 ## Approval
 
-The reviewer enters a name and confirms review of the text and selected media. `verification.json` and `approval.json` are saved with the campaign.
+Enter your name and confirm that you've reviewed the text and selected media. The app saves `verification.json` and `approval.json` with the campaign.
 
-A fingerprint ties the review to the source, content, language, models, checker prompt, selected channels and media bytes. Changes make the review stale. A forced recheck also needs fresh approval. Publishing endpoints enforce this check on the server.
+The review has a fingerprint tied to the source and generated content. It also covers the language, model settings, checker prompt, selected channels and media bytes. If any of these change, you'll need a new check and approval. Forcing a recheck also means approving again. The server checks this before publishing.
 
-Campaign mutations share a lock so edits cannot race approval or publishing within one backend process.
+Changes to a campaign share a lock, so an edit can't happen at the same time as approval or publishing within one backend process.
 
 ## Limits
 
-Checker verdicts are not an accuracy measurement. The numeric check covers digit-based values; spelled-out quantities and ambiguous units still need review. Uploaded images and footage are not checked at the pixel level. User announcement text is not independent evidence.
+The verdicts tell you what the checker decided. They don't measure how accurate it is. The number check covers values written as digits, so written-out quantities and unclear units still need review. The text checker can't verify what's shown in uploaded images or footage. A user's announcement also isn't independent evidence for its own claims.
 
-Reviewer names are self-declared. A shared deployment would need authentication and shared locking. The local website publisher is a demo.
+Anyone can enter a reviewer name in this prototype. A shared deployment would need sign-in and locks that work across backend processes. The website publisher currently saves to a local demo.
 
 ## Tests
 
-The backend tests cover invalid numbers, fabricated quotes, missing checker output, stale approvals, changed media and blocked publishing. Providers are mocked. The evaluation runner in `app/scripts/evaluate_factuality.py` can run labelled cases separately from the regression suite.
+The backend tests cover invalid numbers and made-up quotes, along with missing checker output, stale approvals, changed media and blocked publishing. They use mocked providers. You can run labelled evaluation cases separately with `app/scripts/evaluate_factuality.py`.
