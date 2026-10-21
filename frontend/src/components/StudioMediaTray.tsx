@@ -4,6 +4,7 @@ import type { VideoStatus } from '../types/video'
 import { videoBusy } from '../types/video'
 
 export default function StudioMediaTray({
+  sampleMode = false,
   media,
   imageSelected,
   videoSelected,
@@ -18,6 +19,7 @@ export default function StudioMediaTray({
   onAddImages,
   onAddVideo,
 }: {
+  sampleMode?: boolean
   media: MediaAsset[]
   imageSelected: boolean
   videoSelected: boolean
@@ -87,7 +89,8 @@ export default function StudioMediaTray({
           <button
             type="button"
             className="studio-outline-button"
-            disabled={busy}
+            disabled={busy || sampleMode}
+            title={sampleMode ? 'File uploads are available in the full app.' : undefined}
             onClick={() => setShowAdd((value) => !value)}
           >
             ＋ Add media
@@ -191,7 +194,8 @@ export default function StudioMediaTray({
         <button
           type="button"
           className="studio-media-add-tile"
-          disabled={busy || (!imageSelected && !videoSelected)}
+          disabled={busy || sampleMode || (!imageSelected && !videoSelected)}
+          title={sampleMode ? 'File uploads are available in the full app.' : undefined}
           onClick={() =>
             imageSelected ? imageInput.current?.click() : videoInput.current?.click()
           }

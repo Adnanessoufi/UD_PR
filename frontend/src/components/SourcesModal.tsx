@@ -2,9 +2,11 @@ import type { SourceAnalysis } from '../types/content'
 
 export default function SourcesModal({
   analysis,
+  sample = false,
   onClose,
 }: {
   analysis: SourceAnalysis
+  sample?: boolean
   onClose: () => void
 }) {
   const quick = analysis.document_type === 'quick_announcement'
@@ -59,17 +61,19 @@ export default function SourcesModal({
                   {fact.id}
                 </span>
                 <span className="text-xs text-slate-500">
-                  {quick
-                    ? fact.category === 'web_context'
-                      ? 'Web source'
-                      : fact.category === 'web_verified_announcement'
-                        ? 'Web verified announcement'
-                        : 'User announcement'
-                    : fact.page === null
-                      ? news
-                        ? 'Collected article'
-                        : 'DOCX source'
-                      : `Page ${fact.page}`}
+                  {sample
+                    ? 'Fictional sample source'
+                    : quick
+                      ? fact.category === 'web_context'
+                        ? 'Web source'
+                        : fact.category === 'web_verified_announcement'
+                          ? 'Web verified announcement'
+                          : 'User announcement'
+                      : fact.page === null
+                        ? news
+                          ? 'Collected article'
+                          : 'DOCX source'
+                        : `Page ${fact.page}`}
                 </span>
               </div>
               <p className="mt-3 text-sm font-medium leading-6">{fact.statement}</p>

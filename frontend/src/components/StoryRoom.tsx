@@ -92,10 +92,12 @@ export default function StoryRoom({
   runId,
   story,
   language: initialLanguage,
+  demoAnswers,
 }: {
   runId: string
   story: MasterContent
   language: OutputLanguage
+  demoAnswers?: Record<OutputLanguage, { question: string; answer: string; excerpt: string }[]>
 }) {
   const [open, setOpen] = useState(false)
   const [language, setLanguage] = useState<OutputLanguage>(initialLanguage)
@@ -105,7 +107,7 @@ export default function StoryRoom({
   const [page, setPage] = useState<number | null>(null)
   const [copied, setCopied] = useState(false)
   const [loadError, setLoadError] = useState('')
-  const { job, error, pending, start } = useJob<Answer>(runId, 'story.answer')
+  const { job, error, pending, start } = useJob<Answer>(demoAnswers ? null : runId, 'story.answer')
   const busy = pending || job?.state === 'queued' || job?.state === 'running'
   const t = copy[language]
   const answer = selected?.language === language ? selected : null
@@ -117,6 +119,7 @@ export default function StoryRoom({
     setAnswers([])
     setPage(null)
     setQuestion('')
+    if (demoAnswers) return
     const controller = new AbortController()
     void request<Answer[]>(`/api/story-room/${runId}/answers`, 'GET', undefined, {
       signal: controller.signal,
@@ -127,7 +130,7 @@ export default function StoryRoom({
           setLoadError(cause instanceof Error ? cause.message : 'Could not load saved questions.')
       })
     return () => controller.abort()
-  }, [runId, open])
+  }, [runId, open, Boolean(demoAnswers)])
   useEffect(() => {
     if (job?.state === 'ready' && job.result) {
       const result = job.result
@@ -160,6 +163,39 @@ export default function StoryRoom({
     setSelected(null)
     setPage(null)
     setCopied(false)
+    if (demoAnswers) {
+      const prepared = demoAnswers[language].find(
+        (item) => item.question.toLowerCase() === value.trim().toLowerCase(),
+      )
+      if (!prepared) {
+        setLoadError(
+          language === 'en'
+            ? 'This demo has prepared answers. Choose one of the sample questions below.'
+            : 'A bemutató előre elkészített válaszokat tartalmaz. Válassz egy mintakérdést.',
+        )
+        return
+      }
+      const result: Answer = {
+        id: `sample-${demoAnswers[language].indexOf(prepared)}`,
+        question: prepared.question,
+        language,
+        status: 'answered',
+        answer: prepared.answer,
+        short_reply: prepared.answer,
+        caveat:
+          language === 'en'
+            ? 'Prepared answer from a fictional source. No live AI check.'
+            : 'Előre elkészített válasz kitalált forrásból. Nincs élő MI-ellenőrzés.',
+        evidence: [{ excerpt: prepared.excerpt, page: null, url: null, source_type: 'user' }],
+        excerpts_confirmed: false,
+      }
+      setSelected(result)
+      setAnswers((previous) => [
+        result,
+        ...previous.filter((item) => item.id !== result.id || item.language !== language),
+      ])
+      return
+    }
     try {
       await start({ question: value.trim(), language })
     } catch {
@@ -282,11 +318,18 @@ export default function StoryRoom({
                   </button>
                 </form>
                 <div className="story-room-chips">
-                  {t.chips.map((chip) => (
-                    <button type="button" disabled={busy} key={chip} onClick={() => void ask(chip)}>
-                      {chip}
-                    </button>
-                  ))}
+                  {(demoAnswers ? demoAnswers[language].map((item) => item.question) : t.chips).map(
+                    (chip) => (
+                      <button
+                        type="button"
+                        disabled={busy}
+                        key={chip}
+                        onClick={() => void ask(chip)}
+                      >
+                        {chip}
+                      </button>
+                    ),
+                  )}
                 </div>
                 {busy && (
                   <div className="story-room-working" role="status">
@@ -313,7 +356,11 @@ export default function StoryRoom({
                     <span
                       className={`story-room-confirmed ${answer.status === 'not_in_source' ? 'limited' : ''}`}
                     >
-                      {answer.status === 'not_in_source' ? t.missing : t.confirmed}
+                      {demoAnswers
+                        ? 'Prepared sample answer'
+                        : answer.status === 'not_in_source'
+                          ? t.missing
+                          : t.confirmed}
                     </span>
                     <p className="story-room-answer-text">{answer.answer}</p>
                     {answer.caveat && (
@@ -399,12 +446,20 @@ export default function StoryRoom({
                   <div className="story-room-source-empty">
                     <span aria-hidden="true">⌕</span>
                     <p>{t.sourceEmpty}</p>
-                    <small>{t.pipeline}</small>
+                    <small>
+                      {demoAnswers
+                        ? 'Prepared sample answer → fictional source excerpts'
+                        : t.pipeline}
+                    </small>
                   </div>
                 )}
               </aside>
             </div>
-            <footer className="story-room-footer">{t.draft}</footer>
+            <footer className="story-room-footer">
+              {demoAnswers
+                ? 'Fictional sample · Prepared answers · No live AI generation'
+                : t.draft}
+            </footer>
           </main>
           {answer && page !== null && (
             <div

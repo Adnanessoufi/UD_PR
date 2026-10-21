@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import PlatformMockup from './PlatformMockup'
 import PublishPanel from './PublishPanel'
 import SourcesModal from './SourcesModal'
@@ -33,6 +33,14 @@ type Screen = 'upload' | 'formats' | 'platforms' | 'preview'
 type PreviewState = 'waiting' | 'ready' | 'error'
 type MediaPreferences = { primaryId: string | null; hideGeneratedVideo: boolean }
 type Props = {
+  demo?: {
+    tools: ReactNode
+    story: ReactNode
+    review: ReactNode
+    exports: ReactNode
+    onCampaigns: () => void
+    onChooseSource: () => void
+  }
   brief: CampaignBrief
   onSaveBrief: (brief: CampaignBrief) => Promise<void>
   onOpenCampaign: (id: string) => Promise<void>
@@ -203,6 +211,7 @@ export default function StudioWorkspace(props: Props) {
   } | null>(null)
 
   useEffect(() => {
+    if (props.demo) return
     const controller = new AbortController()
     void Promise.allSettled([
       fetch('/api/meta/status', { signal: controller.signal }).then(
@@ -421,7 +430,7 @@ export default function StudioWorkspace(props: Props) {
           <button
             type="button"
             className="ud-secondary-button"
-            onClick={() => setShowLibrary(true)}
+            onClick={props.demo ? props.demo.onCampaigns : () => setShowLibrary(true)}
           >
             Campaigns
           </button>
@@ -432,11 +441,13 @@ export default function StudioWorkspace(props: Props) {
                 <span>
                   <strong>{platformLabels[name]}</strong>
                   <small>
-                    {connections[name] === null
-                      ? 'Checking'
-                      : connections[name]
-                        ? 'Connected'
-                        : 'Not connected'}
+                    {props.demo
+                      ? 'Demo only'
+                      : connections[name] === null
+                        ? 'Checking'
+                        : connections[name]
+                          ? 'Connected'
+                          : 'Not connected'}
                   </small>
                 </span>
               </div>
@@ -474,6 +485,7 @@ export default function StudioWorkspace(props: Props) {
         </div>
       </nav>
       <main className="ud-main">
+        {props.demo?.tools}
         {props.workspaceError && (
           <p role="alert" className="ud-error workspace-workspace-error">
             {props.workspaceError}
@@ -576,7 +588,10 @@ export default function StudioWorkspace(props: Props) {
                   <>
                     <button
                       type="button"
-                      disabled={regenerating || editing}
+                      disabled={regenerating || editing || Boolean(props.demo)}
+                      title={
+                        props.demo ? 'Live generation is available in the full app.' : undefined
+                      }
                       onClick={() => void regenerateText()}
                     >
                       {regenerating ? 'Regenerating...' : 'Regenerate text'}
@@ -627,7 +642,11 @@ export default function StudioWorkspace(props: Props) {
                 </label>
               </div>
             )}
-            <ExtensionSlot name="review.top" context={extensionContext} />
+            {props.demo ? (
+              props.demo.story
+            ) : (
+              <ExtensionSlot name="review.top" context={extensionContext} />
+            )}
             <div className="ud-preview-stage">
               {active && displayPost && (
                 <PlatformMockup
@@ -654,6 +673,7 @@ export default function StudioWorkspace(props: Props) {
             {(imageSelected || videoSelected) && (
               <StudioMediaTray
                 media={media}
+                sampleMode={Boolean(props.demo)}
                 imageSelected={imageSelected}
                 videoSelected={videoSelected}
                 hideGeneratedVideo={mediaPreferences.hideGeneratedVideo}
@@ -694,7 +714,9 @@ export default function StudioWorkspace(props: Props) {
               </div>
             )}
             <ExtensionSlot name="review.tools" context={extensionContext} />
-            {document && <ExportPanel runId={document.run_id} preview={preview} />}
+            {props.demo
+              ? props.demo.exports
+              : document && <ExportPanel runId={document.run_id} preview={preview} />}
             {combined && (
               <MasterReviewPanel
                 content={combined.content}
@@ -702,15 +724,17 @@ export default function StudioWorkspace(props: Props) {
                 onEditingChange={setMasterEditing}
               />
             )}
-            {document && (
-              <VerificationPanel
-                runId={document.run_id}
-                context={reviewContext}
-                revisionKey={reviewKey}
-                editing={editing || masterEditing || saving || regenerating || !mediaReady}
-                onStatus={setReviewStatus}
-              />
-            )}
+            {props.demo
+              ? props.demo.review
+              : document && (
+                  <VerificationPanel
+                    runId={document.run_id}
+                    context={reviewContext}
+                    revisionKey={reviewKey}
+                    editing={editing || masterEditing || saving || regenerating || !mediaReady}
+                    onStatus={setReviewStatus}
+                  />
+                )}
             {hasPublishDestinations && (
               <div className="ud-review-next">
                 <button
@@ -752,6 +776,8 @@ export default function StudioWorkspace(props: Props) {
                 role="tab"
                 aria-selected={props.sourceMode === 'news'}
                 className={props.sourceMode === 'news' ? 'active' : ''}
+                disabled={Boolean(props.demo)}
+                title={props.demo ? 'News import is available in the full app.' : undefined}
                 onClick={() => props.onSourceModeChange('news')}
               >
                 News inbox
@@ -761,6 +787,12 @@ export default function StudioWorkspace(props: Props) {
                 role="tab"
                 aria-selected={props.sourceMode === 'quick'}
                 className={props.sourceMode === 'quick' ? 'active' : ''}
+                disabled={Boolean(props.demo)}
+                title={
+                  props.demo
+                    ? 'Live announcements are available in the full app. Use the prepared announcement sample above.'
+                    : undefined
+                }
                 onClick={() => props.onSourceModeChange('quick')}
               >
                 Quick announcement
@@ -789,7 +821,7 @@ export default function StudioWorkspace(props: Props) {
                 <h2>Upload document</h2>
                 <div className="ud-upload-row">
                   <div className="ud-document-icon">
-                    {document?.file_type === 'docx' ? 'DOC' : 'PDF'}
+                    {props.demo ? 'TXT' : document?.file_type === 'docx' ? 'DOC' : 'PDF'}
                   </div>
                   <div>
                     <strong>
@@ -799,7 +831,9 @@ export default function StudioWorkspace(props: Props) {
                       {uploading
                         ? `${uploadPercent}% uploaded`
                         : document
-                          ? `${document.file_type.toUpperCase()} · Uploaded${document.cached ? ' · Saved source' : ''}`
+                          ? props.demo
+                            ? 'Prepared sample source'
+                            : `${document.file_type.toUpperCase()} · Uploaded${document.cached ? ' · Saved source' : ''}`
                           : 'PDF or DOCX'}
                     </small>
                   </div>
@@ -807,7 +841,9 @@ export default function StudioWorkspace(props: Props) {
                     type="button"
                     className="ud-secondary-button"
                     disabled={uploading}
-                    onClick={() => fileInput.current?.click()}
+                    onClick={
+                      props.demo ? props.demo.onChooseSource : () => fileInput.current?.click()
+                    }
                   >
                     {document ? 'Replace' : 'Browse'}
                   </button>
@@ -852,6 +888,7 @@ export default function StudioWorkspace(props: Props) {
                   rows={3}
                   maxLength={500}
                   value={quickText}
+                  readOnly={Boolean(props.demo)}
                   onChange={(event) => setQuickText(event.target.value)}
                 />
                 <p className="ud-source-note">
@@ -964,7 +1001,11 @@ export default function StudioWorkspace(props: Props) {
                       : props.onGenerate
                 }
               >
-                {ready ? 'Review campaign' : 'Generate campaign'}
+                {ready
+                  ? 'Review campaign'
+                  : props.demo
+                    ? 'Open sample campaign'
+                    : 'Generate campaign'}
               </button>
               {document && (
                 <button type="button" className="ud-text-button" onClick={newPackage}>
@@ -983,7 +1024,11 @@ export default function StudioWorkspace(props: Props) {
         <CampaignLibrary onOpen={props.onOpenCampaign} onClose={() => setShowLibrary(false)} />
       )}
       {showSources && combined && (
-        <SourcesModal analysis={combined.analysis} onClose={() => setShowSources(false)} />
+        <SourcesModal
+          analysis={combined.analysis}
+          sample={Boolean(props.demo)}
+          onClose={() => setShowSources(false)}
+        />
       )}
     </div>
   )
