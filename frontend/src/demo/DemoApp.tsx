@@ -60,6 +60,7 @@ function combinedSample(sample: Sample, language: Language): CombinedResult {
 }
 
 export default function DemoApp() {
+  const [workspaceVersion, setWorkspaceVersion] = useState(0)
   const [sampleId, setSampleId] = useState('research')
   const [language, setLanguage] = useState<Language>('en')
   const [screen, setScreen] = useState<'upload' | 'preview'>('upload')
@@ -142,6 +143,7 @@ export default function DemoApp() {
     setNotice('')
   }
   function chooseSample(id: string) {
+    setWorkspaceVersion((value) => value + 1)
     setSampleId(id)
     clearEdits()
     setScreen('upload')
@@ -184,6 +186,7 @@ export default function DemoApp() {
   return (
     <>
       <StudioWorkspace
+        key={`${sample.id}:${language}:${workspaceVersion}`}
         demo={{
           tools: (
             <section className="ud-demo-bar" aria-label="Public sample demo">
@@ -354,6 +357,7 @@ export default function DemoApp() {
         mediaPreferences={{ primaryId, hideGeneratedVideo: false }}
         onUploaded={() => undefined}
         onNewDocument={() => {
+          setWorkspaceVersion((value) => value + 1)
           clearEdits()
           setScreen('upload')
         }}
