@@ -1,5 +1,7 @@
 # The public demo on Vercel
 
+[Open the public demo](https://ud-pr-studio.vercel.app).
+
 The public site is a sample walkthrough. You can explore two fictional campaigns, switch the drafts between English and Hungarian, and check the source excerpts. You can edit the text in your tab and download it too.
 
 The drafts, question answers and review examples are prepared in advance. The media includes illustrative posters and short videos with synthetic English narration and captions. None of it is evidence of a real study or an invitation to a real event.

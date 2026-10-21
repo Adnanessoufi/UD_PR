@@ -8,6 +8,10 @@ You can go back to the source and see where a claim came from. There's a review 
 
 ## Have a look around
 
+[Open the live demo](https://ud-pr-studio.vercel.app)
+
+![UD PR Studio public sample demo](frontend/public/demo/preview.png)
+
 The public demo lets you explore two sample campaigns without installing anything or adding API keys. You can switch between English and Hungarian, edit the drafts and check the source excerpts. There are sample images and short narrated videos too.
 
 The study and event in the demo are fictional, and the outputs are prepared in advance. For your own documents and live generation, run the full app locally using the steps below. The [Vercel setup notes](docs/VERCEL_DEMO.md) explain how the two versions work.
