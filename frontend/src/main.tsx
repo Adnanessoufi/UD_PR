@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import DemoApp from './demo/DemoApp'
 import UniversityNewsPage from './pages/UniversityNewsPage'
 import './styles.css'
 import './university-site.css'
@@ -10,6 +11,12 @@ import './workspace-tools.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {window.location.pathname.startsWith('/university-news') ? <UniversityNewsPage /> : <App />}
+    {import.meta.env.VITE_DEMO_MODE === 'true' ? (
+      <DemoApp />
+    ) : window.location.pathname.startsWith('/university-news') ? (
+      <UniversityNewsPage />
+    ) : (
+      <App />
+    )}
   </React.StrictMode>,
 )

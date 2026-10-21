@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">A quieter place to study</title><desc id="desc">Fictional sample: four-week pilot, 24 volunteers, 18 reported better concentration. No grades measured and no control group.</desc>
+  <rect width="1200" height="675" fill="#173c34"/>
+  <circle cx="1050" cy="90" r="310" fill="none" stroke="#31574a"/>
+  <circle cx="1050" cy="90" r="240" fill="none" stroke="#31574a"/>
+  <text x="65" y="72" fill="#d7ec92" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">UD PR STUDIO / FICTIONAL SAMPLE</text>
+  <text x="65" y="185" fill="#faf9ee" font-family="Georgia,serif" font-size="76">A quieter place</text>
+  <text x="65" y="275" fill="#faf9ee" font-family="Georgia,serif" font-size="76">to study.</text>
+  <text x="70" y="330" fill="#bdcfbe" font-family="Arial,sans-serif" font-size="22">A small pilot. Feedback worth reading carefully.</text>
+  <path d="M825 240h215v220H825z" fill="#f2f1e2" transform="rotate(8 930 350)"/>
+  <path d="M805 230h215v220H805z" fill="#d7ec92" transform="rotate(-5 910 340)"/>
+  <path d="M845 285h130M845 310h130M845 335h95" stroke="#648354" stroke-width="5" transform="rotate(-5 910 340)"/>
+  <text x="70" y="457" fill="#d7ec92" font-family="Georgia,serif" font-size="64">24</text>
+  <text x="260" y="457" fill="#d7ec92" font-family="Georgia,serif" font-size="64">4 weeks</text>
+  <text x="70" y="490" fill="#bdcfbe" font-family="Arial,sans-serif" font-size="17">volunteers</text>
+  <text x="265" y="490" fill="#bdcfbe" font-family="Arial,sans-serif" font-size="17">pilot duration</text>
+  <path d="M65 545h1070" stroke="#496354"/>
+  <text x="70" y="588" fill="#f2f1e2" font-family="Arial,sans-serif" font-size="18">18 reported better concentration. Grades were not measured.</text>
+  <text x="70" y="625" fill="#9fb5a6" font-family="Arial,sans-serif" font-size="14">Illustrative example only. No control group. No real research results.</text>
+</svg>

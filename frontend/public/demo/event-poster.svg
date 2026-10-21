@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">An evening of student projects</title><desc id="desc">Fictional event for the demo. 21 November 2026, 17:00 to 19:00. East Campus project room. No actual event to attend.</desc>
+  <rect width="1200" height="675" fill="#eceddb"/>
+  <text x="65" y="72" fill="#62765a" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">UD PR STUDIO / FICTIONAL SAMPLE</text>
+  <text x="65" y="185" fill="#173c34" font-family="Georgia,serif" font-size="76">Meet the people.</text>
+  <text x="65" y="275" fill="#173c34" font-family="Georgia,serif" font-size="76">Try the projects.</text>
+  <text x="70" y="330" fill="#62765a" font-family="Arial,sans-serif" font-size="22">A sample announcement for a student project evening.</text>
+  <rect x="855" y="365" width="165" height="165" fill="#173c34" transform="rotate(-12 930 440)"/>
+  <circle cx="1040" cy="365" r="66" fill="#afc575"/>
+  <path d="M865 480l190 100H865z" fill="#8ba67b"/>
+  <text x="70" y="448" fill="#173c34" font-family="Georgia,serif" font-size="54">21 November</text>
+  <text x="70" y="495" fill="#62765a" font-family="Arial,sans-serif" font-size="24">2026 / 17:00 to 19:00</text>
+  <path d="M65 545h1070" stroke="#c4cdb3"/>
+  <text x="70" y="588" fill="#173c34" font-family="Arial,sans-serif" font-size="18">East Campus project room. Free entry. No registration.</text>
+  <text x="70" y="625" fill="#62765a" font-family="Arial,sans-serif" font-size="14">Illustrative example only. This event does not exist.</text>
+</svg>

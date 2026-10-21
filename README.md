@@ -6,6 +6,12 @@ You give it a PDF, a Word document or a news article. You can also start with a 
 
 You can go back to the source and see where a claim came from. There's a review step before publishing, because a draft sounding confident doesn't mean it got everything right.
 
+## Have a look around
+
+The public demo lets you explore two sample campaigns without installing anything or adding API keys. You can switch between English and Hungarian, edit the drafts and check the source excerpts. There are sample images and short narrated videos too.
+
+The study and event in the demo are fictional, and the outputs are prepared in advance. For your own documents and live generation, run the full app locally using the steps below. The [Vercel setup notes](docs/VERCEL_DEMO.md) explain how the two versions work.
+
 ## What you can do with it
 
 - Upload a PDF or DOCX, bring in a news article, or write a short announcement.

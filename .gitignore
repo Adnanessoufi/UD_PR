@@ -12,6 +12,8 @@ __pycache__/
 .env
 .env.*
 !.env.example
+!frontend/.env.demo
+.vercel/
 *.log
 backend/storage/*
 !backend/storage/.gitkeep
@@ -23,6 +25,7 @@ backend/storage/*
 !/docs/EXTENDING_THE_APP.md
 !/docs/VALIDATION_WORKFLOW.md
 !/docs/LIVING_STORIES.md
+!/docs/VERCEL_DEMO.md
 
 # Editor and OS files
 .vscode/
